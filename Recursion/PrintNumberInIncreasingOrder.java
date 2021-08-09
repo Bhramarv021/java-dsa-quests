@@ -7,21 +7,24 @@ class PrintNumberInIncreasingOrder{
 
 		Scanner sc = new Scanner(System.in);
 		n = sc.nextInt();
-		
+
 		printTillNInDec(n);
 		printTillNInInc(n);
 	}
 
 	private static void printTillNInDec(int n){
-		if (n==0)
+		if (n==1){
+			System.out.println(n);
 			return;
+		}
 
 		System.out.println(n + " ");
 		printTillNInDec(n-1);
 	}
 
 	private static void printTillNInInc(int n){
-		if (n==0) {
+		if (n==1) {
+			System.out.println(n);
 			return;
 		}
 		printTillNInInc(n-1);
