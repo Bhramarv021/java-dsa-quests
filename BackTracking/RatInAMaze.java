@@ -68,4 +68,4 @@ class RatInAMaze{
 		}
 		return false;
 	}
-}
+}	
