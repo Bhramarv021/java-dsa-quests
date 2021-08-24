@@ -9,13 +9,13 @@ class CountTotalOccuranceInSortedList{
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Enter number you want to search : ");
 		int se = sc.nextInt();
-		int firstOccurance = findFirstOccurance(arr,n,se);
-		int lastOccurance = findLastOccurance(arr, n, se);		
+		int firstOccurance = findOccuranceUsingBS(arr,n,se, true);
+		int lastOccurance = findOccuranceUsingBS(arr, n, se, false);		
 		int totalNum = lastOccurance - firstOccurance + 1;
 		System.out.println(firstOccurance + " " + lastOccurance + " " + totalNum);
 	}
 
-	private static int findFirstOccurance(int[] arr, int n, int se){
+	private static int findOccuranceUsingBS(int[] arr, int n, int se, boolean findFirst){
 		int low = 0;
 		int high = n-1;
 		int result = -1;
@@ -23,27 +23,11 @@ class CountTotalOccuranceInSortedList{
 			int mid = low + (high - low)/2;
 			if (arr[mid] == se) {
 				result = mid;
-				high = mid-1;
-				System.out.println("R : "+result);
-			}
-			else if (arr[mid] > se) {
-				high = mid-1;
-			}
-			else
-				low = mid+1;
-		}
-		return result;
-	}
-
-	private static int findLastOccurance(int[] arr, int n, int se){
-		int low = 0;
-		int high = n-1;
-		int result = -1;
-		while (low <= high) {
-			int mid = low + (high - low)/2;
-			if (arr[mid] == se) {
-				result = mid;
-				low = mid+1;
+				if (findFirst == true) {
+					high = mid-1;
+				}
+				else
+					low = mid+1;
 			}
 			else if (arr[mid] > se) {
 				high = mid-1;
